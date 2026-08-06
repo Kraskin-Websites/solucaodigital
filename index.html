@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kraskin Websites | Soluções Digitais para Pequenas Empresas</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --gold: #f5a623;
+            --white: #ffffff;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --dark-gray: #495057;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+            --gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            --gradient-accent: linear-gradient(135deg, #e94560 0%, #f5a623 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        header.scrolled {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--white) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: rgba(233, 69, 96, 0.08);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(245, 166, 35, 0.05);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: pulse 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.15);
+            color: var(--accent);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            color: var(--white);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 550px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            background: var(--white);
+            padding: 3rem 2rem;
+            margin-top: -40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* ===== SERVIÇOS ===== */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.4rem 0;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .service-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price .from {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .service-price .value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 0.8rem;
+        }
+
+        /* ===== COMO FUNCIONA ===== */
+        .process {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .process-steps {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 auto 1.2rem;
+        }
+
+        .step h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .step p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== DEPOIMENTOS ===== */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--light);
+        }
+
+        .testimonials-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            color: var(--dark-gray);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            padding-top: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .testimonial-info strong {
+            display: block;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-info span {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        .stars {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        /* ===== CONTATO ===== */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--gradient);
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(233, 69, 96, 0.05);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+        }
+
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact .section-header h2 {
+            color: var(--white);
+        }
+
+        .contact .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .form-group select option {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .form-message.success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+            display: block;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0a1a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                background: rgba(26, 26, 46, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 5rem 2rem;
+                gap: 2rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                font-size: 1.2rem;
+                color: var(--white);
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">Krasskin <span>Websites</span></a>
+            <ul class="nav-menu">
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#processo">Como Funciona</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Orçamento</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🚀 Soluções digitais rápidas e práticas</div>
+            <h1>Conecte sua empresa aos <span>clientes</span> de forma profissional</h1>
+            <p>Serviços digitais rápidos para pequenas empresas. Cardápios, portfólios, identidade visual, agendamento online e muito mais.</p>
+            <div class="hero-buttons">
+                <a href="#servicos" class="btn-primary">Ver Serviços</a>
+                <a href="#contato" class="btn-secondary">Solicitar Orçamento</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number" data-target="200">0</span>
+                <span class="stat-label">Clientes Atendidos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="48">0</span>
+                <span class="stat-label">Horas de Entrega</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="15">0</span>
+                <span class="stat-label">Min para Aprovar</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="99">0</span>
+                <span class="stat-label">% Satisfação</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Serviços -->
+    <section id="servicos" class="services">
+        <div class="section-header">
+            <h2>Nossos Serviços</h2>
+            <p>Soluções digitais completas para o seu negócio crescer online</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Cardápio Digital -->
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Cardápio Digital</h3>
+                <p>Cardápio online interativo para restaurantes, lanchonetes e bares. Substitua o cardápio físico por algo moderno e prático.</p>
+                <ul class="service-features">
+                    <li>Fotos e descrições dos pratos</li>
+                    <li>Categorias organizadas</li>
+                    <li>Link para redes sociais</li>
+                </ul>
+                <div class="service-price">
+                    <span class="from">A partir de</span>
+                    <span class="value">R$ 197</span>
+                </div>
+                <a href="#contato" class="service-link">Solicitar orçamento →</a>
+            </div>
+
+            <!-- Landing Page -->
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>Landing Page</h3>
+                <p>Página única de alto impacto para captar clientes, divulgar promoções ou lançar produtos com profissionalismo.</p>
+                <ul class="service-features">
+                    <li>Design responsivo moderno</li>
+                    <li>Formulário de captura</li>
+                    <li>Otimizada para conversão</li>
+                    <li>Integração com WhatsApp</li>
+                    <li>Hospedagem incluída</li>
+                </ul>
+                <div class="service-price">
+                    <span class="from">A partir de</span>
+                    <span class="value">R$ 297</span>
+                </div>
+                <a href="#contato" class="service-link">Solicitar orçamento →</a>
+            </div>
+
+            <!-- Portfólio -->
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>Portfólio Digital</h3>
+                <p>Apresente seu trabalho de forma profissional. Ideal para fotógrafos, designers, músicos e profissionais liberais.</p>
+                <ul class="service-features">
+                    <li>Galeria de trabalhos</li>
+                    <li>Seção sobre você</li>
+                    <li>Depoimentos de clientes</li>
+                    <li>Integração com redes</li>
+                    <li>Design personalizado</li>
+                </ul>
+                <div class="service-price">
+                    <span class="from">A partir de</span>
+                    <span class="value">R$ 347</span>
+                </div>
+                <a href="#contato" class="service-link">Solicitar orçamento →</a>
+            </div>
+
+            <!-- Identidade Digital -->
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Identidade Digital</h3>
+                <p>Pacote completo de branding para redes sociais. Logo, paleta de cores, tipografia e templates para posts.</p>
+                <ul class="service-features">
+                    <li>Criação de logotipo</li>
+                    <li>Paleta de cores da marca</li>
+                    <li>Templates para Instagram</li>
+                    <li>Tipografia definida</li>
+                    <li>Manual de marca digital</li>
+                </ul>
+                <div class="service-price">
+                    <span class="from">A partir de</span>
+                    <span class="value">R$ 397</span>
+                </div>
+                <a href="#contato" class="service-link">Solicitar orçamento →</a>
+            </div>
+
+            <!-- Booking Digital -->
+            <div class="service-card">
+                <div class="service-icon">📅</div>
+                <h3>Booking Digital</h3>
+                <p>Sistema de agendamento online para salões, clínicas, estúdios e prestadores de serviço. Seus clientes marcam sozinhos.</p>
+                <ul class="service-features">
+                    <li>Agenda online integrada</li>
+                    <li>Confirmação automática</li>
+                    <li>Notificação por WhatsApp</li>
+                    <li>Controle de horários</li>
+                    <li>Painel administrativo</li>
+                </ul>
+                <div class="service-price">
+                    <span class="from">A partir de</span>
+                    <span class="value">R$ 447</span>
+                </div>
+                <a href="#contato" class="service-link">Solicitar orçamento →</a>
+            </div>
+
+            <!-- Pacote Completo -->
+            <div class="service-card" style="border: 2px solid var(--accent);">
+                <div class="service-icon">⭐</div>
+                <h3>Pacote Completo</h3>
+                <p>Tudo que sua empresa precisa para ter presença digital profissional. Melhor custo-benefício com desconto especial.</p>
+                <ul class="service-features">
+                    <li>Landing Page personalizada</li>
+                    <li>Identidade visual completa</li>
+                    <li>Cardápio ou portfólio</li>
+                    <li>Booking/Agendamento</li>
+                    <li>Suporte por 3 meses</li>
+                </ul>
+                <div class="service-price">
+                    <span class="from">A partir de</span>
+                    <span class="value" style="color: var(--accent);">R$ 897</span>
+                </div>
+                <a href="#contato" class="service-link">Solicitar orçamento →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section id="processo" class="process">
+        <div class="section-header">
+            <h2>Como Funciona</h2>
+            <p>Processo simples e rápido para colocar sua empresa no digital</p>
+        </div>
+
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Contato</h3>
+                <p>Envie sua solicitação pelo formulário ou WhatsApp com os detalhes do seu negócio.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Proposta</h3>
+                <p>Em até 24h enviamos a proposta personalizada com escopo e investimento.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Desenvolvimento</h3>
+                <p>Iniciamos a criação com atualizações diárias até a aprovação final.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Entrega</h3>
+                <p>Projeto entregue, publicado e pronto para captar seus clientes online.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="testimonials">
+        <div class="section-header">
+            <h2>O que dizem nossos clientes</h2>
+            <p>Empresas reais com resultados reais</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">O cardápio digital mudou completamente meu restaurante. Os clientes adoram acessar pelo QR Code e eu economizei com impressão.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">MC</div>
+                    <div class="testimonial-info">
+                        <strong>Maria Clara</strong>
+                        <span>Restaurante Sabor & Cia</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Meu portfólio ficou incrível! Agora consigo mostrar meus trabalhos de forma profissional e já fechei 3 clientes novos pela internet.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">RF</div>
+                    <div class="testimonial-info">
+                        <strong>Rafael Ferreira</strong>
+                        <span>Fotógrafo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Me salvou, preço muito acessivél e consegui ter meu cardápio digital para atender meus clientes com proficinalismo.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">AS</div>
+                    <div class="testimonial-info">
+                        <strong>Fernanda Moreira</strong>
+                        <span>Açái Sabor do Verão</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="contact">
+        <div class="contact-wrapper">
+            <div class="section-header">
+                <h2>Vamos conversar?</h2>
+                <p>Solicite seu orçamento gratuito e transforme sua presença digital hoje mesmo</p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Serviço de interesse</label>
+                    <select id="service" name="service" required>
+                        <option value="">Selecione um serviço</option>
+                        <option value="cardapio">Cardápio Digital</option>
+                        <option value="landing">Landing Page</option>
+                        <option value="portfolio">Portfólio Digital</option>
+                        <option value="identidade">Identidade Digital</option>
+                        <option value="booking">Booking Digital</option>
+                        <option value="pacote">Pacote Completo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Conte sobre seu negócio</label>
+                    <textarea id="message" name="message" placeholder="Descreva o que precisa, seu segmento e qualquer detalhe importante..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Solicitação</button>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">KRA<span>SKIN</span></a>
+                <p>Soluções digitais rápidas e práticas para pequenas empresas. Conectamos seu negócio aos seus clientes com tecnologia acessível.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="#servicos">Cardápio Digital</a></li>
+                    <li><a href="#servicos">Landing Page</a></li>
+                    <li><a href="#servicos">Portfólio</a></li>
+                    <li><a href="#servicos">Identidade Digital</a></li>
+                    <li><a href="#servicos">Booking Digital</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="https://wa.me/5551991042626">WhatsApp</a></li>
+                    <li><a href="mailto:contato@kraskin.com.br">E-mail</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#contato">Orçamento</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kraskin Websites. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5551991042626?text=Olá! Gostaria de saber mais sobre os serviços da Kraskin." class="whatsapp-float" title="Fale conosco no WhatsApp">💬</a>
+
+    <script>
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Menu mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Contador animado
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let counted = false;
+
+        function animateCounters() {
+            statNumbers.forEach(num => {
+                const target = parseInt(num.getAttribute('data-target'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+
+                const counter = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        num.textContent = target + (num.parentElement.querySelector('.stat-label').textContent.includes('%') ? '%' : '+');
+                        clearInterval(counter);
+                    } else {
+                        num.textContent = Math.floor(current);
+                    }
+                }, 16);
+            });
+        }
+
+        // Intersection Observer para contadores
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !counted) {
+                    counted = true;
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) statsObserver.observe(statsSection);
+
+        // Formulário de contato
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !whatsapp || !service || !message) {
+                formMessage.textContent = 'Por favor, preencha todos os campos.';
+                formMessage.classList.add('error');
+                formMessage.classList.remove('success');
+                formMessage.style.display = 'block';
+                return;
+            }
+
+            // Formatar mensagem para WhatsApp
+            const serviceNames = {
+                'cardapio': 'Cardápio Digital',
+                'landing': 'Landing Page',
+                'portfolio': 'Portfólio Digital',
+                'identidade': 'Identidade Digital',
+                'booking': 'Booking Digital',
+                'pacote': 'Pacote Completo'
+            };
+
+            const msg = `Olá! Meu nome é ${name}.\n\nServiço de interesse: ${serviceNames[service]}\n\nMensagem: ${message}`;
+            const whatsappLink = `https://wa.me/5551991042626?text=Olá! Gostaria de saber mais sobre os serviços da Kraskin.`;
+
+            formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+            formMessage.classList.add('success');
+            formMessage.style.display = 'block';
+
+            contactForm.reset();
+
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+                formMessage.classList.remove('success');
+            }, 5000);
+        });
+
+        // Máscara de telefone
+        document.getElementById('whatsapp').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offset = 80;
+                        const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({
+                            top: position,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Animação de entrada nos cards
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-card, .testimonial-card, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            animateOnScroll.observe(el);
+        });
+    </script>
+</body>
+</html>
