@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kraskin Websites | Serviços digitais rápidos para pequenas empresas. Cardápios, portfólios a partir de R$ 99.00</title>
     
-    <style>
+   <style>
         * {
             margin: 0;
             padding: 0;
@@ -28,6 +28,13 @@
             --gradient-accent: linear-gradient(135deg, #e94560 0%, #f5a623 100%);
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+            max-width: 100%;
+            width: 100%;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -37,6 +44,15 @@
             color: var(--primary);
             line-height: 1.7;
             overflow-x: hidden;
+        }
+
+        /* ===== ANTI-OVERFLOW / FIX MOBILE ===== */
+        img,
+        svg,
+        video,
+        canvas {
+            max-width: 100%;
+            height: auto;
         }
 
         /* ===== HEADER ===== */
@@ -505,7 +521,6 @@
 
         .testimonial-card::before {
             content: '"';
-            position: absolute;
             top: 10px;
             left: 20px;
             font-size: 4rem;
@@ -859,6 +874,7 @@
             }
         }
     </style>
+
 </head>
 <body>
     <!-- Header -->
